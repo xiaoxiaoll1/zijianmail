@@ -9,14 +9,76 @@
 	<description>zijianmall collection</description>
 	<packaging>pom</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+		<junit.version>4.13.1</junit.version>
+		<log4j.version>2.14.0</log4j.version>
+		<mysql.version>8.0.22</mysql.version>
+		<druid.version>1.2.4</druid.version>
+		<spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+	</properties>
+
 	<modules>
 		<module>zijianmall-coupen</module>
 		<module>zijianmall-member</module>
 		<module>zijianmall-order</module>
 		<module>zijianmall-product</module>
 		<module>zijianmall-ware</module>
-	</modules>
+		<module>renren-fast</module>
+		<module>renren-generator</module>
+		<module>zijianmall-common</module>
+        <module>zijianmall-gateway</module>
+    </modules>
 
 
+	<dependencyManagement>
+		<dependencies>
+			<!--spring boot 2.2.2-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--spring cloud Hoxton.SR1-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR9</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!--mysql-->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<!-- druid-->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<!--junit-->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<!--log4j-->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
