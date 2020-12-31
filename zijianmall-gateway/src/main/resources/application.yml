@@ -7,11 +7,16 @@ spring:
 
     gateway:
       routes:
-        - id: test_baidu
-          uri: https://www.baidu.com
+        - id: product_route
+          uri: lb://zijianmall-product
           predicates:
-            - Query=url, baidu
-        - id: test_qq
-          uri: https://www.qq.com
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+        - id: admin_route
+          uri: lb://renren-fast
           predicates:
-            - Query=url, qq
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/renren-fast/$\{segment}
+

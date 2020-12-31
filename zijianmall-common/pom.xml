@@ -62,6 +62,12 @@
         </exclusions>
     </dependency>
 
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alicloud-oss</artifactId>
+        <version>2.2.0.RELEASE</version>
+    </dependency>
+
     <!--        配置中心来做配置管理-->
     <dependency>
         <groupId>com.alibaba.cloud</groupId>

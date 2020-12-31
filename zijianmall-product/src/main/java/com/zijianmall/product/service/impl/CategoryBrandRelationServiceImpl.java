@@ -13,6 +13,9 @@ import com.zijianmall.product.entity.CategoryBrandRelationEntity;
 import com.zijianmall.product.service.CategoryBrandRelationService;
 
 
+/**
+ * @author xiaozj
+ */
 @Service("categoryBrandRelationService")
 public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandRelationDao, CategoryBrandRelationEntity> implements CategoryBrandRelationService {
 

@@ -26,10 +26,10 @@
 		<module>zijianmall-order</module>
 		<module>zijianmall-product</module>
 		<module>zijianmall-ware</module>
-		<module>renren-fast</module>
-		<module>renren-generator</module>
 		<module>zijianmall-common</module>
         <module>zijianmall-gateway</module>
+		<module>renren-fast</module>
+        <module>zijianmall-thirdParty</module>
     </modules>
 
 
