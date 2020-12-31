@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: zijianmall-thirdParty
+
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 22b7cabc-0146-40c2-acbb-e27599fdcc3f
+        extension-configs[0]:
+          data-id: oss-config.yml
+          group: dev
+          refresh: true
+
+server:
+  port: 13000

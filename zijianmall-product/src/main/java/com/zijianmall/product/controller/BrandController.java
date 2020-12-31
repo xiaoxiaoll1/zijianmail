@@ -76,6 +76,12 @@ public class BrandController {
         return R.ok();
     }
 
+    @RequestMapping("/update/status")
+    public R updateStatus(@RequestBody BrandEntity brand) {
+        brandService.updateById(brand);
+        return R.ok();
+    }
+
     /**
      * 删除
      */
