@@ -32,8 +32,6 @@ public final class OSSFactory {
 
         if(config.getType() == Constant.CloudService.QINIU.getValue()){
             return new QiniuCloudStorageService(config);
-        }else if(config.getType() == Constant.CloudService.ALIYUN.getValue()){
-            return new AliyunCloudStorageService(config);
         }else if(config.getType() == Constant.CloudService.QCLOUD.getValue()){
             return new QcloudCloudStorageService(config);
         }

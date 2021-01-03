@@ -21,6 +21,9 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
       enabled: true
+
+
+
   redis:
     open: false  # 是否开启redis缓存  true开启   false关闭
     database: 0
@@ -42,6 +45,21 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 22b7cabc-0146-40c2-acbb-e27599fdcc3f
+#        extension-configs[0]:
+#          data-id: oss-config.yml
+#          group: dev
+#          refresh: true
+
+    alicloud:
+      access-key: LTAI4G5ko4QenH2hGAUFmSMq
+      secret-key: U4np9B0IDwhip3LG2a5NgnV1jbapPJ
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: zijianmall
 #  resources:
 #    add-mappings: false
 

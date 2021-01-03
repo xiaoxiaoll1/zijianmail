@@ -2,6 +2,14 @@ spring:
   application:
     name: zijianmall-thirdParty
 
+#  cloud:
+#    alicloud:
+#      access-key: LTAI4G5ko4QenH2hGAUFmSMq
+#      secret-key: U4np9B0IDwhip3LG2a5NgnV1jbapPJ
+#      oss:
+#        endpoint: oss-cn-shanghai.aliyuncs.com
+#        bucket: zijianmall
+
   cloud:
     nacos:
       config:
