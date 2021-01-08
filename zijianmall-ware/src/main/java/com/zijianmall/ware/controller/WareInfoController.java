@@ -35,9 +35,8 @@ public class WareInfoController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("ware:wareinfo:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = wareInfoService.queryPage(params);
+        PageUtils page = wareInfoService.queryWareInfo(params);
 
         return R.ok().put("page", page);
     }

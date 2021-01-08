@@ -7,6 +7,18 @@ spring:
 
     gateway:
       routes:
+        - id: ware_route
+          uri: lb://zijianmall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+        - id: member_route
+          uri: lb://zijianmall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
         - id: product_route
           uri: lb://zijianmall-product
           predicates:

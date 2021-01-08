@@ -2,7 +2,9 @@ package com.zijianmall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zijianmall.common.utils.PageUtils;
+import com.zijianmall.ware.entity.PurchaseDetailEntity;
 import com.zijianmall.ware.entity.WareSkuEntity;
+import com.zijianmall.ware.exception.PittyException;
 
 import java.util.Map;
 
@@ -16,5 +18,9 @@ import java.util.Map;
 public interface WareSkuService extends IService<WareSkuEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PageUtils queryWareSkuInfo(Map<String, Object> params);
+
+    void addStock(PurchaseDetailEntity detail);
 }
 

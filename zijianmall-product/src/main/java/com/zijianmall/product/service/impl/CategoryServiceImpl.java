@@ -1,7 +1,11 @@
 package com.zijianmall.product.service.impl;
 
+import com.zijianmall.product.service.CategoryBrandRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -19,6 +23,9 @@ import com.zijianmall.product.service.CategoryService;
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    private CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -60,6 +67,31 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public void removeMenuByIds(List<Long> asList) {
         // TODO 检查当前删除的菜单，是否被其他的地方引用
         baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> list = new ArrayList<>();
+        List<Long> parentPath = getParentId(catelogId, list);
+        Collections.reverse(parentPath);
+        Long[] path = parentPath.toArray(new Long[parentPath.size()]);
+        return path;
+    }
+
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+
+    }
+
+    private List<Long> getParentId(Long catelogId, List<Long> list) {
+        list.add(catelogId);
+        CategoryEntity category = this.getById(catelogId);
+        if (category.getParentCid() != 0 ) {
+            getParentId(category.getParentCid(), list);
+        }
+        return list;
     }
 
     /**

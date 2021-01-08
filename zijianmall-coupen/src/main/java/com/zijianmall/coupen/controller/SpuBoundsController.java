@@ -5,11 +5,7 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.zijianmall.coupen.entity.SpuBoundsEntity;
 import com.zijianmall.coupen.service.SpuBoundsService;
@@ -57,11 +53,9 @@ public class SpuBoundsController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-   // @RequiresPermissions("coupen:spubounds:save")
+    @PostMapping("/save")
     public R save(@RequestBody SpuBoundsEntity spuBounds){
 		spuBoundsService.save(spuBounds);
-
         return R.ok();
     }
 
