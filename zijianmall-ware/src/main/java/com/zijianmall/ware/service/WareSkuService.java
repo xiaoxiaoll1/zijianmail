@@ -5,7 +5,9 @@ import com.zijianmall.common.utils.PageUtils;
 import com.zijianmall.ware.entity.PurchaseDetailEntity;
 import com.zijianmall.ware.entity.WareSkuEntity;
 import com.zijianmall.ware.exception.PittyException;
+import com.zijianmall.ware.vo.SkuHasStockVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,5 +24,7 @@ public interface WareSkuService extends IService<WareSkuEntity> {
     PageUtils queryWareSkuInfo(Map<String, Object> params);
 
     void addStock(PurchaseDetailEntity detail);
+
+    List<SkuHasStockVo> skuHasStock(List<Long> skuIds);
 }
 

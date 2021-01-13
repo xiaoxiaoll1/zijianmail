@@ -230,6 +230,17 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
     }
 
+    @Override
+    public List<Long> selectSearchAttr(List<Long> attrIds) {
+        QueryWrapper<AttrEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("search_type", 1L).in("attr_id", attrIds);
+        List<AttrEntity> attrs = this.baseMapper.selectList(wrapper);
+        List<Long> list = attrs.stream().map(attrEntity -> {
+            return attrEntity.getAttrId();
+        }).collect(Collectors.toList());
+        return list;
+    }
+
     /**
      * wrapper末尾以or或者and结尾无影响
      * @param relationEntities

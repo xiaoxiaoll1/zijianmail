@@ -5,6 +5,7 @@ import com.zijianmall.common.utils.PageUtils;
 import com.zijianmall.product.entity.SkuInfoEntity;
 
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,5 +24,6 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     PageUtils queryPageByCondition(Map<String, Object> params);
 
 
+    List<SkuInfoEntity> getSkusBySpuId(Long spuId);
 }
 

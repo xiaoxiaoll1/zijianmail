@@ -30,6 +30,7 @@
         <module>zijianmall-gateway</module>
 		<module>renren-fast</module>
         <module>zijianmall-thirdParty</module>
+        <module>zijianmall-elasticsearch</module>
     </modules>
 
 

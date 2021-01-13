@@ -5,6 +5,7 @@ import com.zijianmall.common.utils.R;
 import com.zijianmall.ware.entity.PurchaseDetailEntity;
 import com.zijianmall.ware.exception.PittyException;
 import com.zijianmall.ware.feign.ProductFeignService;
+import com.zijianmall.ware.vo.SkuHasStockVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.awt.print.PrinterIOException;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -88,6 +91,24 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             });
         }
 
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public List<SkuHasStockVo> skuHasStock(List<Long> skuIds) {
+        List<SkuHasStockVo> vos = skuIds.stream().map(skuId -> {
+            SkuHasStockVo vo = new SkuHasStockVo();
+            QueryWrapper<WareSkuEntity> wrapper = new QueryWrapper<>();
+            wrapper.eq("sku_id", skuId);
+            wrapper.select("(IFNULL(sum(stock),0)-IFNULL(sum(stock_locked),0)) AS total");
+            Map<String, Object> map = this.getMap(wrapper);
+            Integer total = Integer.parseInt(String.valueOf(map.get("total")));
+            vo.setSkuId(skuId);
+            vo.setHasStock(total > 0);
+            return vo;
+        }).collect(Collectors.toList());
+
+        return vos;
     }
 
 }
